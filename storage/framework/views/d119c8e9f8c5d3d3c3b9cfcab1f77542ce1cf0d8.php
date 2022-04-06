@@ -47,7 +47,8 @@
                         </a>
                     </div>
                     <div class="login-form">
-                        <form action="<?php echo e(url('createLogin')); ?>" method="get">
+                        <form action="<?php echo e(url('createLogin')); ?>" method="post">
+                            <?php echo csrf_field(); ?>
                             <div class="form-group">
                                 <label>Email Address</label>
                                 <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
@@ -66,7 +67,7 @@
                         <div class="register-link">
                             <p>
                                 Already have account?
-                                <a href="#">Sign In</a>
+                                <a href="<?php echo e(url('register')); ?>">Sign In</a>
                             </p>
                         </div>
                     </div>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\department;
+use App\Models\employee;
+use App\Models\pod;
 use App\Models\project;
 use Illuminate\Http\Request;
 
@@ -27,6 +30,7 @@ class ProjectController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -38,6 +42,15 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
+        $pro = $request->input('project');
+
+
+        if ($pro != null) {
+            $project = new project();
+            $project->title = $pro;
+            $project->save();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -49,6 +62,10 @@ class ProjectController extends Controller
     public function show(project $project)
     {
         //
+
+        $employee1 = employee::where('department_id', 2 )->get();
+        $employee2 = employee::where('pod_id', 1)->get();
+        return view('pod',['employee'=>$employee1,'employee2'=> $employee2]);
     }
 
     /**
@@ -83,5 +100,26 @@ class ProjectController extends Controller
     public function destroy(project $project)
     {
         //
+    }
+    public function department(Request $request){
+
+        $depart = $request->input('department');
+        if ($depart != null){
+            $department = new department();
+            $department->name = $depart;
+            $department->status = 1;
+            $department->save();
+            return redirect()->back();
+        }
+    }
+    public function pod(Request $request){
+
+        $pod = $request->input('pod');
+        if ($pod != null){
+            $pods = new pod();
+            $pods->name = $pod;
+            $pods->save();
+            return redirect()->back();
+        }
     }
 }

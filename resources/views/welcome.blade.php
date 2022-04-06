@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,46 +77,6 @@
                                 </li>
                                 <li>
                                     <a href="forget-pass.html">Resource Planner</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="#">
-                                <i class="fas fa-desktop"></i>
-                                <span class="bot-line"></span>UI Elements</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">FontAwesome</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
                                 </li>
                             </ul>
                         </li>
@@ -200,7 +161,7 @@
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                <img src="{{asset('app/public/images'.session('profile'))}}" alt="John Doe"/>
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">{{session('name')}}</a>
@@ -209,7 +170,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                            <img src="{{asset('storage/app/public/images'.session('profile'))}}" alt="John Doe"/>
                                         </a>
                                     </div>
                                     <div class="content">
@@ -254,23 +215,26 @@
                             <h3>
                                 <i class="zmdi zmdi-account-calendar"></i>Today's Task</h3>
                         </div>
+                        @foreach($task as $tasks)
                         <div class="card-body">
                             <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                                <span class="badge badge-pill badge-success">Success</span>
-                                You successfully read this important alert.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true"> <i class="fa fa-check" ></i></span>
-                                </button>
-                                <button style="margin-left:150px">
-                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>
-                                </button>
+                                <span class="badge badge-pill badge-success">{{$task->status}}</span>&nbsp;&nbsp;&nbsp;
+                               {{$tasks->title ?? ''}}
+                                <a type="button" class="close" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-check" ></i></a>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Well done!</h4>
+                                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so
+                                    that you can see how spacing within an alert works with this kind of content.</p>
+                                <hr>
+                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
                             </div>
                         </div>
 
+                        @endforeach
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
@@ -282,6 +246,34 @@
         </div>
     </div>
 
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->

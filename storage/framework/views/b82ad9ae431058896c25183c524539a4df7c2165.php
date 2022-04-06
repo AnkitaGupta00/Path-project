@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,46 +77,6 @@
                                 </li>
                                 <li>
                                     <a href="forget-pass.html">Resource Planner</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="#">
-                                <i class="fas fa-desktop"></i>
-                                <span class="bot-line"></span>UI Elements</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">FontAwesome</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
                                 </li>
                             </ul>
                         </li>
@@ -200,7 +161,7 @@
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                <img src="<?php echo e(asset('app/public/images'.session('profile'))); ?>" alt="John Doe"/>
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#"><?php echo e(session('name')); ?></a>
@@ -209,7 +170,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                            <img src="<?php echo e(asset('storage/app/public/images'.session('profile'))); ?>" alt="John Doe"/>
                                         </a>
                                     </div>
                                     <div class="content">
@@ -254,23 +215,46 @@
                             <h3>
                                 <i class="zmdi zmdi-account-calendar"></i>Today's Task</h3>
                         </div>
+                        <?php $__currentLoopData = $task; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tasks): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="card-body">
                             <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                                <span class="badge badge-pill badge-success">Success</span>
-                                You successfully read this important alert.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true"> <i class="fa fa-check" ></i></span>
-                                </button>
-                                <button style="margin-left:50px">
-                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>
-                                </button>
+                                <span class="badge badge-pill badge-success"><?php echo e($task->status); ?></span>&nbsp;&nbsp;&nbsp;
+                               <?php echo e($tasks->title ?? ''); ?>
+
+                                <a type="button" class="close" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-check" ></i></a>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Well done!</h4>
+                                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so
+                                    that you can see how spacing within an alert works with this kind of content.</p>
+                                <hr>
+                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
                             </div>
                         </div>
 
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="overview-item overview-item--c4">
+                            <div class="overview__inner">
+                                <div class="overview-box clearfix">
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-money"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h2>$1,060,386</h2>
+                                        <span>total earnings</span>
+                                    </div>
+                                </div>
+                                <div class="overview-chart"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                    <canvas id="widgetChart4" height="61" style="display: block; width: 149px; height: 61px;" width="149" class="chartjs-render-monitor"></canvas>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
@@ -282,6 +266,34 @@
         </div>
     </div>
 
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="vendor/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap JS-->

@@ -64,7 +64,7 @@
                             <div class="form-group">
                                 <label for="cc-payment" class="control-label mb-1">Status</label>
                                 <input id="cc-pament" name="status" type="text" class="form-control"
-                                       placeholder="Your task title" value="success">
+                                       placeholder="Your task title" value="Task">
                             </div>
                             <div class="row">
                                 <div class="col-6">

@@ -47,7 +47,8 @@
                         </a>
                     </div>
                     <div class="login-form">
-                        <form action="{{url('show')}}" method="get">
+                        <form action="{{url('show')}}" method="post" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
                                 <label>Username</label>
                                 <input class="au-input au-input--full" type="text" name="name" placeholder="FullName">
@@ -67,16 +68,24 @@
                             <div class="form-group">
                                 <label for="birthday">Birthday</label>
                                 <input class="au-input au-input--full" type="date" id="birthday" name="birthday">
-{{--                                <span style="color: #ff0000">@error ('birthday'){{$message}}@enderror</span>--}}
                             </div>
                             <div class="form-group">
-                                <label>Branch</label>
-                                <input class="au-input au-input--full" type="text" name="branch" placeholder="Your Branch">
-                            </div>
+                                    <label for="select" class=" form-control-label">Department</label>
 
+                                    <select name="department" id="select" class="form-control">
+                                        @foreach($department as $depart)
+                                        <option >{{$depart->name}}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
                             <div class="form-group">
-                                <label>Department</label>
-                                <input class="au-input au-input--full" type="text" name="department" placeholder="Your Department">
+                                <label for="select" class=" form-control-label">POD</label>
+
+                                <select name="pod" id="select" class="form-control">
+                                    @foreach($pod as $pods)
+                                        <option >{{$pods->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Profile Picture</label>
@@ -87,7 +96,7 @@
                                    &nbsp; <input type="checkbox" name="admin"> &nbsp;Admin choose me
                                 </label>
                             </div>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                            <input type="submit" class="au-btn au-btn--block au-btn--green m-b-20" value="register">
                         </form>
                         <div class="register-link">
                             <p>
@@ -108,8 +117,29 @@
 <!-- Bootstrap JS-->
 <script src="vendor/bootstrap-4.1/popper.min.js"></script>
 <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script>
+    var msg = '{{Session::get('alert')}}';
+        {{--var msg1 = '{{Session::get('success')}}';--}}
+    var exist = '{{Session::has('alert')}}';
+    {{--var exist1 = '{{Session::has('success')}}';--}}
+    if (exist) {
+        alert(msg);
+    }
+
+</script>
 <!-- Vendor JS       -->
 <script src="vendor/slick/slick.min.js">
+</script>
+<script>
+    $(document).ready(function () {
+        toastr.options.timeOut = 10000;
+        @if (Session::has('warning'))
+        toastr.warning('{{ Session::get('warning') }}');
+        @elseif(Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+        @endif
+    });
+
 </script>
 <script src="vendor/wow/wow.min.js"></script>
 <script src="vendor/animsition/animsition.min.js"></script>

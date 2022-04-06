@@ -259,8 +259,6 @@
                             <th>Name</th>
                             <th>email</th>
                             <th>User name</th>
-                            <th class="text-right">department</th>
-                            <th class="text-right">branch</th>
                             <th class="text-right">dob</th>
                             <th></th>
                         </tr>
@@ -276,8 +274,6 @@
                                     <td>{{$user->fullName}}<br></td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->userName}}</td>
-                                    <td class="text-right">{{$user->department}}</td>
-                                    <td class="text-right">{{$user->branch}}</td>
                                     <td class="text-right">{{$user->dob}}</td>
                                     <td>
                                         <a href="{{url('assignTask/'.$user->id.'/'.$task->id)}}" id="payment-button" type="submit" class="btn btn-info btn-block btn-sm">Assign</a>

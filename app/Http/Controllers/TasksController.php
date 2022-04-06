@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\department;
 use App\Models\employee;
 use App\Models\employee_task;
 use App\Models\project;
@@ -28,7 +29,7 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id , $taskid)
+    public function create($id , $taskid )
     {
         //
         $taskid = tasks::find($taskid)->id;
@@ -69,8 +70,7 @@ class TasksController extends Controller
             $task->project_id = $projectid;
 
             $task->save();
-            $tasks = tasks::all();
-            return view('tasksList',['task'=>$tasks]);
+            return redirect()->route('index');
         }else{
 
             return redirect()->back()->with('alert', 'Give a valid title');
@@ -123,15 +123,6 @@ class TasksController extends Controller
     {
         //
     }
-    public function project(Request $request){
-        $pro = $request->input('project');
 
-        if ($pro != null) {
-            $project = new project();
-            $project->title = $pro;
-            $project->save();
-
-        }
-    }
 
 }

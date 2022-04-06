@@ -13,6 +13,6 @@ class employee extends Model
     use SoftDeletes;
     public function tasks()
     {
-        return $this->belongsToMany(tasks::class, 'employee_task');
+        return $this->belongsToMany(tasks::class, 'employee_tasks','employee_id','task_id');
     }
 }

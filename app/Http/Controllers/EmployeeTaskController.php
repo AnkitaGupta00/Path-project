@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\department;
 use App\Models\employee_task;
+use App\Models\pod;
 use App\Models\project;
 use App\Models\tasks;
 use Illuminate\Http\Request;
@@ -19,7 +21,10 @@ class EmployeeTaskController extends Controller
         //
         $tasks = tasks::all();
         $project = project::all();
-        return view('tasksList',['task'=>$tasks ,'project'=>$project]);
+        $department = department::all();
+        $pod = pod::all();
+
+        return view('tasksList',['task'=>$tasks ,'project'=>$project,'department'=>$department,'pod'=>$pod]);
     }
 
     /**

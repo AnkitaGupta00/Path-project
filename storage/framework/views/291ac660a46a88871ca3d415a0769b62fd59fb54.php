@@ -259,8 +259,6 @@
                             <th>Name</th>
                             <th>email</th>
                             <th>User name</th>
-                            <th class="text-right">department</th>
-                            <th class="text-right">branch</th>
                             <th class="text-right">dob</th>
                             <th></th>
                         </tr>
@@ -276,8 +274,6 @@
                                     <td><?php echo e($user->fullName); ?><br></td>
                                     <td><?php echo e($user->email); ?></td>
                                     <td><?php echo e($user->userName); ?></td>
-                                    <td class="text-right"><?php echo e($user->department); ?></td>
-                                    <td class="text-right"><?php echo e($user->branch); ?></td>
                                     <td class="text-right"><?php echo e($user->dob); ?></td>
                                     <td>
                                         <a href="<?php echo e(url('assignTask/'.$user->id.'/'.$task->id)); ?>" id="payment-button" type="submit" class="btn btn-info btn-block btn-sm">Assign</a>

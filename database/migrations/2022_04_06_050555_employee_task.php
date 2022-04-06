@@ -15,17 +15,12 @@ class EmployeeTask extends Migration
     {
         //
         Schema::create('employee_tasks', function (Blueprint $table) {
-
             $table->id();
-            $table->bigInteger('employee_id')->unsigned();
-            $table->bigInteger('task_id')->unsigned();
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
-            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
+        $table->bigInteger('employee_id')->unsigned();
+        $table->bigInteger('task_id')->unsigned();
+        $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+        $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->timestamps();
-
-            $table->charset = 'utf8mb4';
-            $table->collation ='utf8mb4_bin';
-
         });
     }
 

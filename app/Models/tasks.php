@@ -10,6 +10,6 @@ class tasks extends Model
     use HasFactory;
     public function employees()
     {
-        return $this->belongsToMany(employee::class, 'employee_task');
+        return $this->belongsToMany(employee::class, 'employee_task','task_id','employee_id');
     }
 }

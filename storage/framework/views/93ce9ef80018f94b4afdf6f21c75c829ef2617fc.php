@@ -47,7 +47,8 @@
                         </a>
                     </div>
                     <div class="login-form">
-                        <form action="<?php echo e(url('show')); ?>" method="get">
+                        <form action="<?php echo e(url('show')); ?>" method="post" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <div class="form-group">
                                 <label>Username</label>
                                 <input class="au-input au-input--full" type="text" name="name" placeholder="FullName">
@@ -67,16 +68,24 @@
                             <div class="form-group">
                                 <label for="birthday">Birthday</label>
                                 <input class="au-input au-input--full" type="date" id="birthday" name="birthday">
-
                             </div>
                             <div class="form-group">
-                                <label>Branch</label>
-                                <input class="au-input au-input--full" type="text" name="branch" placeholder="Your Branch">
-                            </div>
+                                    <label for="select" class=" form-control-label">Department</label>
 
+                                    <select name="department" id="select" class="form-control">
+                                        <?php $__currentLoopData = $department; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $depart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option ><?php echo e($depart->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                            </div>
                             <div class="form-group">
-                                <label>Department</label>
-                                <input class="au-input au-input--full" type="text" name="department" placeholder="Your Department">
+                                <label for="select" class=" form-control-label">POD</label>
+
+                                <select name="pod" id="select" class="form-control">
+                                    <?php $__currentLoopData = $pod; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pods): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option ><?php echo e($pods->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Profile Picture</label>
@@ -87,7 +96,7 @@
                                    &nbsp; <input type="checkbox" name="admin"> &nbsp;Admin choose me
                                 </label>
                             </div>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                            <input type="submit" class="au-btn au-btn--block au-btn--green m-b-20" value="register">
                         </form>
                         <div class="register-link">
                             <p>
@@ -108,8 +117,29 @@
 <!-- Bootstrap JS-->
 <script src="vendor/bootstrap-4.1/popper.min.js"></script>
 <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script>
+    var msg = '<?php echo e(Session::get('alert')); ?>';
+        
+    var exist = '<?php echo e(Session::has('alert')); ?>';
+    
+    if (exist) {
+        alert(msg);
+    }
+
+</script>
 <!-- Vendor JS       -->
 <script src="vendor/slick/slick.min.js">
+</script>
+<script>
+    $(document).ready(function () {
+        toastr.options.timeOut = 10000;
+        <?php if(Session::has('warning')): ?>
+        toastr.warning('<?php echo e(Session::get('warning')); ?>');
+        <?php elseif(Session::has('success')): ?>
+        toastr.success('<?php echo e(Session::get('success')); ?>');
+        <?php endif; ?>
+    });
+
 </script>
 <script src="vendor/wow/wow.min.js"></script>
 <script src="vendor/animsition/animsition.min.js"></script>

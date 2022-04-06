@@ -50,76 +50,9 @@
                 <div class="header__navbar">
                     <ul class="list-unstyled">
                         <li class="has-sub">
-                            <a href="#">
-                                <i class="fas fa-copy"></i>
-                                <span class="bot-line"></span>MY WORK</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="login.html">Daily Standup</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Activity</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Meetings</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="#">
-                                <i class="fas fa-copy"></i>
-                                <span class="bot-line"></span>PROJECT MANAGER</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="login.html">Project Overview</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Reports</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Resource Planner</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="#">
+                            <a href="{{url('pod')}}">
                                 <i class="fas fa-desktop"></i>
-                                <span class="bot-line"></span>UI Elements</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">FontAwesome</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
-                            </ul>
+                                <span class="bot-line"></span>department</a>
                         </li>
                     </ul>
                 </div>
@@ -236,7 +169,7 @@
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                    <a href="#">
+                                    <a href="{{url('logout')}}">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
                             </div>
@@ -406,7 +339,7 @@
                                     <td>{{\App\Models\tasks::where('project_id',$projects->id)->count()}}</td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <a href="{{url('task/'.$item->id)}}" class="item" data-toggle="tooltip"
+                                            <a href="{{url('task/'.$projects->id)}}" class="item" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Send">
                                                 <i class="zmdi zmdi-check"></i>
                                             </a>
@@ -417,6 +350,71 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="p-t-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="table-data__tool">
+                            <div class="table-data__tool-left"></div>
+                            <div class="table-data__tool-right">
+
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addDepart"
+                                        data-whatever="@mdo" style="margin-left: 25px; margin-top: 20px">
+                                    Add Department +
+                                </button>
+                            </div>
+                        </div>
+                        <!-- TOP CAMPAIGN-->
+                        <div class="top-campaign">
+                            <h3 class="title-3 m-b-30">All Departments</h3>
+                            <div class="table-responsive">
+                                <table class="table table-top-campaign">
+                                    <tbody>
+                                    @foreach($department as $depart)
+                                    <tr>
+                                        <td>{{$depart->name}}</td>
+                                        <td>{{$depart->status}}</td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--  END TOP CAMPAIGN-->
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- TOP CAMPAIGN-->
+                        <div class="table-data__tool">
+                            <div class="table-data__tool-left"></div>
+                            <div class="table-data__tool-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addPod"
+                                        data-whatever="@mdo" style="margin-left: 25px; margin-top: 20px">
+                                    Add Department +
+                                </button>
+                            </div>
+                        </div>
+                        <!-- TOP CAMPAIGN-->
+                        <div class="top-campaign">
+                            <h3 class="title-3 m-b-30">All Pods</h3>
+                            <div class="table-responsive">
+                                <table class="table table-top-campaign">
+                                    <tbody>
+                                    @foreach($pod as $pods)
+                                        <tr>
+                                            <td>{{$pods->name}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--  END TOP CAMPAIGN-->
                     </div>
                 </div>
             </div>
@@ -435,10 +433,62 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{url('addSub')}}">
+                <form action="{{url('addProject')}}">
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Name of Subject</label>
-                        <input type="text" class="form-control" id="recipient-name" name="name">
+                        <input type="text" class="form-control" id="recipient-name" name="project">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addDepart" tabindex="-1" role="dialog" aria-labelledby="addDepartlLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDepartlLabel">Add new Department</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('addDepart')}}">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name of Department</label>
+                        <input type="text" class="form-control" id="recipient-name" name="department">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addPod" tabindex="-1" role="dialog" aria-labelledby="addPodlLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPodlLabel">Add new Department</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('addPod')}}">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name of Pod</label>
+                        <input type="text" class="form-control" id="recipient-name" name="pod">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
