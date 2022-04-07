@@ -4625,6 +4625,7 @@ section {
     height: 30px;
     width: 30px;
     position: relative;
+    cursor: pointer;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
@@ -4641,6 +4642,7 @@ section {
     color: #808080;
     position: absolute;
     top: 50%;
+    cursor: pointer;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);

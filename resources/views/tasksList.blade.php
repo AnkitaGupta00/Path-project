@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -271,10 +272,10 @@
                                                    data-placement="top" title="" data-original-title="Send">
                                                     <i class="zmdi zmdi-mail-send"></i>
                                                 </a>
-                                                <a class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <a href="" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </a>
-                                                <a class="item" data-toggle="tooltip" data-placement="top"
+                                                <a href="" class="item" data-toggle="tooltip" data-placement="top"
                                                    title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </a>
@@ -284,7 +285,6 @@
                                 @endforeach
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                     <section class="p-t-60 p-b-20">
@@ -339,7 +339,7 @@
                                     <td>{{\App\Models\tasks::where('project_id',$projects->id)->count()}}</td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <a href="{{url('task/'.$projects->id)}}" class="item" data-toggle="tooltip"
+                                            <a href="{{url('complete/'.$projects->id)}}" class="item" data-toggle="tooltip"
                                                data-placement="top" title="" data-original-title="Send">
                                                 <i class="zmdi zmdi-check"></i>
                                             </a>

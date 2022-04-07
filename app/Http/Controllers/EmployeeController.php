@@ -20,9 +20,11 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        $task = employee::find(session('id'))->tasks()->first();
 
-        return view('welcome',['task'=>$task]);
+        $task = employee::find(session('id'))->tasks()->get();
+        $employee = employee::find(session('id'))->id;
+        $taskid = employee::find(session('id'))->tasks()->first()->id;
+        return view('welcome', ['task' => $task, 'employee' => $employee, 'taskid' => $taskid]);
 
     }
 
@@ -58,8 +60,8 @@ class EmployeeController extends Controller
         $pod = $request->input("pod");
         $admin = $request->input('admin');
 
-$department_id = department::all()->where('name',$department)->first()->id;
-$pod_id = pod::all()->where('name',$pod)->first()->id;
+        $department_id = department::all()->where('name', $department)->first()->id;
+        $pod_id = pod::all()->where('name', $pod)->first()->id;
         if (empty($name)) {
             return back()->with('warning', 'Failed! Name is required');
         } elseif (empty($email)) {
@@ -77,6 +79,7 @@ $pod_id = pod::all()->where('name',$pod)->first()->id;
             $employee->dob = $age;
             $employee->pod_id = $pod_id;
             $employee->department_id = $department_id;
+            $employee->profile =$profile;
 
             $employee->dob = $age;
             if ($admin != null) {
@@ -115,13 +118,14 @@ $pod_id = pod::all()->where('name',$pod)->first()->id;
                 session(['password' => $employeeDataItem['password']]);
                 session(['profile' => $employeeDataItem['profile']]);
             }
+
 //            $empid = session('id');
 
 //            $task = employee_task::where('employee_id', $empid)->get();
             $employeePannel = $request->get('user')->first()->pannel;
             if (!$employeePannel) {
 
-                return redirect('/');
+                return redirect('/home');
             } else {
 
                 return redirect()->route('index');
@@ -177,7 +181,7 @@ $pod_id = pod::all()->where('name',$pod)->first()->id;
         $employee = employee::all();
         $department = department::all();
         $pod = pod::all();
-        return view('register',['department'=>$department,'pod'=>$pod]);
+        return view('register', ['department' => $department, 'pod' => $pod]);
     }
 
     public

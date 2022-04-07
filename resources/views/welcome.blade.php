@@ -43,125 +43,17 @@
             <div class="header3-wrap">
                 <div class="header__logo">
                     <a href="#">
-                        <img src="images/icon/logo-white.png" alt="CoolAdmin"/>
+                        <img src="{{asset('app/public/images/'.session('profile'))}}" alt="CoolAdmin"/>
                     </a>
                 </div>
                 <div class="header__navbar">
-                    <ul class="list-unstyled">
-                        <li class="has-sub">
-                            <a href="#">
-                                <i class="fas fa-copy"></i>
-                                <span class="bot-line"></span>MY WORK</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="login.html">Daily Standup</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Activity</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Meetings</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a href="#">
-                                <i class="fas fa-copy"></i>
-                                <span class="bot-line"></span>PROJECT MANAGER</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="{{url('tasks')}}">Project Overview</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Reports</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Resource Planner</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+
                 </div>
                 <div class="header__tool">
-                    <div class="header-button-item has-noti js-item-menu">
-                        <i class="zmdi zmdi-notifications"></i>
-                        <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
-                            <div class="notifi__title">
-                                <p>You have 3 Notifications</p>
-                            </div>
-                            <div class="notifi__item">
-                                <div class="bg-c1 img-cir img-40">
-                                    <i class="zmdi zmdi-email-open"></i>
-                                </div>
-                                <div class="content">
-                                    <p>You got a email notification</p>
-                                    <span class="date">April 12, 2018 06:50</span>
-                                </div>
-                            </div>
-                            <div class="notifi__item">
-                                <div class="bg-c2 img-cir img-40">
-                                    <i class="zmdi zmdi-account-box"></i>
-                                </div>
-                                <div class="content">
-                                    <p>Your account has been blocked</p>
-                                    <span class="date">April 12, 2018 06:50</span>
-                                </div>
-                            </div>
-                            <div class="notifi__item">
-                                <div class="bg-c3 img-cir img-40">
-                                    <i class="zmdi zmdi-file-text"></i>
-                                </div>
-                                <div class="content">
-                                    <p>You got a new file</p>
-                                    <span class="date">April 12, 2018 06:50</span>
-                                </div>
-                            </div>
-                            <div class="notifi__footer">
-                                <a href="#">All notifications</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-button-item js-item-menu">
-                        <i class="zmdi zmdi-settings"></i>
-                        <div class="setting-dropdown js-dropdown">
-                            <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-globe"></i>Language</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-pin"></i>Location</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-email"></i>Email</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-notifications"></i>Notifications</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
                             <div class="image">
-                                <img src="{{asset('app/public/images'.session('profile'))}}" alt="John Doe"/>
+                                <img src="{{asset('images/'.session('profile'))}}" alt="John Doe"/>
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">{{session('name')}}</a>
@@ -170,7 +62,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="{{asset('storage/app/public/images'.session('profile'))}}" alt="John Doe"/>
+                                            <img src="{{asset('images/'.session('profile'))}}" alt="John Doe"/>
                                         </a>
                                     </div>
                                     <div class="content">
@@ -180,20 +72,7 @@
                                         <span class="email">{{session('email')}}</span>
                                     </div>
                                 </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-settings"></i>Setting</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
-                                </div>
+
                                 <div class="account-dropdown__footer">
                                     <a href="{{url('logout')}}">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
@@ -213,27 +92,26 @@
                         <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
                             <div class="bg-overlay bg-overlay--blue"></div>
                             <h3>
-                                <i class="zmdi zmdi-account-calendar"></i>Today's Task</h3>
+                                <i class="zmdi zmdi-account-calendar"></i>All Task</h3>
                         </div>
                         @foreach($task as $tasks)
                         <div class="card-body">
                             <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                                <span class="badge badge-pill badge-success">{{$task->status}}</span>&nbsp;&nbsp;&nbsp;
-                               {{$tasks->title ?? ''}}
+                                <span class="badge badge-pill badge-success"></span>&nbsp;&nbsp;&nbsp;
+                               {{$tasks->title}} &nbsp;
                                 <a type="button" class="close" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-check" ></i></a>
                             </div>
                             <div class="alert alert-success" role="alert">
                                 <h4 class="alert-heading">Well done!</h4>
-                                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so
-                                    that you can see how spacing within an alert works with this kind of content.</p>
+                                <p></p>
                                 <hr>
-                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                                <p class="mb-0">{{$tasks->decs}}</p>
                             </div>
                         </div>
-
                         @endforeach
                     </div>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -257,21 +135,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                <form action="{{url('commit'. '/'.$taskid . '/' . $employee)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="textarea-input" class=" form-control-label">Comment</label>
+                        </div><br>
+                        <div class="col-12 ">
+                            <textarea name="commit" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary"></input>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
+
         </div>
     </div>
 </div>

@@ -21,7 +21,7 @@ use App\Http\Controllers\EmployeeTaskController;
 //Route::get('/welcome', function () {
 //    return view('welcome');
 //});
-Route::get('/',[EmployeeController::class,'index']);
+Route::get('/home',[EmployeeController::class,'index']);
 Route::get('/register',[EmployeeController::class,'register']);
 Route::post('/show',[EmployeeController::class,'store']);
 Route::get('/login',[EmployeeController::class,'create']);
@@ -34,8 +34,10 @@ Route::get('/welcome',[TasksController::class,'show']);
 Route::get('/addProject',[ProjectController::class,'store']);
 Route::get('/task/{id}',[EmployeeController::class,'assign']);
 Route::get('/index',[ProjectController::class,'index']);
-Route::get('/tasks',[EmployeeTaskController::class,'index'])->name('index');
+Route::get('/tasks',[TasksController::class,'task'])->name('index');
 Route::get('/addDepart',[ProjectController::class,'department']);
 Route::get('/addPod',[ProjectController::class,'pod']);
 Route::get('/pod',[ProjectController::class,'show']);
+Route::get('/complete/{id}',[ProjectController::class,'create']);
+Route::post('/commit/{taskid}/{empid}',[TasksController::class,'createTask']);
 

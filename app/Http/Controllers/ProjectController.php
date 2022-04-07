@@ -19,7 +19,7 @@ class ProjectController extends Controller
     {
         //
         $project = project::all();
-        return view('Index',['project'=> $project]);
+        return view('Index', ['project' => $project]);
     }
 
     /**
@@ -27,16 +27,22 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-
+        $project = project::find($id)->status;
+        if ($project == 0) {
+            $status = 'Processing';
+        } else {
+            $status = 'complete';
+        }
+        return redirect()->back();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,29 +55,29 @@ class ProjectController extends Controller
             $project = new project();
             $project->title = $pro;
             $project->save();
-            return redirect()->back();
+
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\project  $project
+     * @param \App\Models\project $project
      * @return \Illuminate\Http\Response
      */
     public function show(project $project)
     {
         //
 
-        $employee1 = employee::where('department_id', 2 )->get();
+        $employee1 = employee::where('department_id', 2)->get();
         $employee2 = employee::where('pod_id', 1)->get();
-        return view('pod',['employee'=>$employee1,'employee2'=> $employee2]);
+        return view('pod', ['employee' => $employee1, 'employee2' => $employee2]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\project  $project
+     * @param \App\Models\project $project
      * @return \Illuminate\Http\Response
      */
     public function edit(project $project)
@@ -82,8 +88,8 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\project  $project
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\project $project
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, project $project)
@@ -94,17 +100,19 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\project  $project
+     * @param \App\Models\project $project
      * @return \Illuminate\Http\Response
      */
     public function destroy(project $project)
     {
         //
     }
-    public function department(Request $request){
+
+    public function department(Request $request)
+    {
 
         $depart = $request->input('department');
-        if ($depart != null){
+        if ($depart != null) {
             $department = new department();
             $department->name = $depart;
             $department->status = 1;
@@ -112,10 +120,12 @@ class ProjectController extends Controller
             return redirect()->back();
         }
     }
-    public function pod(Request $request){
+
+    public function pod(Request $request)
+    {
 
         $pod = $request->input('pod');
-        if ($pod != null){
+        if ($pod != null) {
             $pods = new pod();
             $pods->name = $pod;
             $pods->save();

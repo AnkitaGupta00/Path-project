@@ -255,7 +255,6 @@
                     <table class="table table-borderless table-striped table-earning">
                         <thead>
                         <tr>
-                            <th></th>
                             <th>Name</th>
                             <th>email</th>
                             <th>User name</th>
@@ -268,9 +267,6 @@
                         <?php $__currentLoopData = $employee; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <form action="">
-                                    <td>
-                                        <input type="checkbox" name="check">
-                                    </td>
                                     <td><?php echo e($user->fullName); ?><br></td>
                                     <td><?php echo e($user->email); ?></td>
                                     <td><?php echo e($user->userName); ?></td>

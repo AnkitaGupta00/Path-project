@@ -255,7 +255,6 @@
                     <table class="table table-borderless table-striped table-earning">
                         <thead>
                         <tr>
-                            <th></th>
                             <th>Name</th>
                             <th>email</th>
                             <th>User name</th>
@@ -268,9 +267,6 @@
                         @foreach($employee as $user)
                             <tr>
                                 <form action="">
-                                    <td>
-                                        <input type="checkbox" name="check">
-                                    </td>
                                     <td>{{$user->fullName}}<br></td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->userName}}</td>

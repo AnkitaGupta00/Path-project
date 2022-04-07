@@ -82,25 +82,23 @@
                                 <div class="col-6">
                                     <label for="x_card_code" class="control-label mb-1">Security code</label>
                                     <div class="input-group">
-                                        <input id="x_card_code" name="code" type="tel" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code"
+                                        <input id="x_card_code" name="code" type="tel" class="form-control cc-cvc"
+                                               value="" data-val="true"
+                                               data-val-required="Please enter the security code"
                                                data-val-cc-cvc="Please enter a valid security code" autocomplete="off">
 
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="x_card_code" class="control-label mb-1">Choose Project</label>
-                                        <div class="input-group">
-                                            <select class="form-select" aria-label="Default select example" name="project">
-                                                @foreach($project as $item)
-                                                    <option>{{$item->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="select" class=" form-control-label">POD</label>
+
+                                <select name="project" id="select" class="form-control">
+
+                                    @foreach($project as $item)
+                                        <option>{{$item->title}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <br>
                             <div>
