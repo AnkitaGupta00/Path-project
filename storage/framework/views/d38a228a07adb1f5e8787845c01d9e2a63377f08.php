@@ -136,7 +136,7 @@
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                <img src="<?php echo e(asset('app/public/images/'.session('profile'))); ?>" alt="John Doe"/>
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#"><?php echo e(session('name')); ?></a>
@@ -145,7 +145,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                            <img src="<?php echo e(asset('app/public/images/'.session('profile'))); ?>" alt="John Doe"/>
                                         </a>
                                     </div>
                                     <div class="content">
@@ -336,7 +336,7 @@
                                     <td><?php echo e($projects->title ?? ''); ?></td>
 
                                     <td><?php echo e($projects->created_at); ?></td>
-                                    <td class="process">Processing</td>
+                                    <td class="process"><?php echo e($projects->status); ?></td>
                                     <td><?php echo e(\App\Models\tasks::where('project_id',$projects->id)->count()); ?></td>
                                     <td>
                                         <div class="table-data-feature">

@@ -90,6 +90,16 @@
 <script src="vendor/animsition/animsition.min.js"></script>
 <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 </script>
+<script>
+    var msg = '{{Session::get('alert')}}';
+        {{--var msg1 = '{{Session::get('success')}}';--}}
+    var exist = '{{Session::has('alert')}}';
+    {{--var exist1 = '{{Session::has('success')}}';--}}
+    if (exist) {
+        alert(msg);
+    }
+
+</script>
 <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
 <script src="vendor/counter-up/jquery.counterup.min.js">
 </script>

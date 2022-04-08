@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,23 +94,28 @@
                                 <i class="zmdi zmdi-account-calendar"></i>All Task</h3>
                         </div>
                         <?php $__currentLoopData = $task; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tasks): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="card-body">
-                            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-                                <span class="badge badge-pill badge-success"></span>&nbsp;&nbsp;&nbsp;
-                               <?php echo e($tasks->title); ?> &nbsp;
-                                <a type="button" class="close" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-check" ></i></a>
+                            <?php
+
+                            ?>
+                            <div class="card-body">
+                                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <h4 class="alert-heading"><?php echo e($tasks->title); ?> &nbsp;</h4>
+                                    </button>
+                                    <a type="button" class="close" data-toggle="modal"
+                                       data-target="#exampleModal" data-whatever="@mdo"><i
+                                            class="fa fa-check"></i></a>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <?php echo e($comment->comment); ?>
+
+                                            <hr>
+                                            <p class="mb-0"><?php echo e($tasks->decs); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="alert alert-success" role="alert">
-                                <h4 class="alert-heading">Well done!</h4>
-                                <p></p>
-                                <hr>
-                                <p class="mb-0"><?php echo e($tasks->decs); ?></p>
-                            </div>
-                        </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
-                    <div  style="float: left">
-                        xkjgnblfbg
                     </div>
                 </div>
 
@@ -119,8 +123,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
-                                href="https://colorlib.com">Colorlib</a>.</p>
+
                     </div>
                 </div>
             </div>
@@ -128,7 +131,8 @@
     </div>
 
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -138,14 +142,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo e(url('commit'. '/'.$taskid . '/' . $employee)); ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="<?php echo e(url('commit'. '/'.$taskid . '/' . $employee)); ?>" method="post"
+                      enctype="multipart/form-data" class="form-horizontal">
                     <?php echo csrf_field(); ?>
                     <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="textarea-input" class=" form-control-label">Comment</label>
-                        </div><br>
+                        </div>
+                        <br>
                         <div class="col-12 ">
-                            <textarea name="commit" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                            <textarea name="commit" id="textarea-input" rows="9" placeholder="Content..."
+                                      class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

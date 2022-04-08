@@ -136,7 +136,7 @@
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                <img src="{{asset('app/public/images/'.session('profile'))}}" alt="John Doe"/>
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">{{session('name')}}</a>
@@ -145,7 +145,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe"/>
+                                            <img src="{{asset('app/public/images/'.session('profile'))}}" alt="John Doe"/>
                                         </a>
                                     </div>
                                     <div class="content">
@@ -199,7 +199,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="title-4">
-                            Tasks - {{\App\Models\tasks::count('id')}}
+                            Tasks - {{$taskCount}}
                         </h1>
                         <hr class="line-seprate">
                     </div>
@@ -335,7 +335,7 @@
                                     <td>{{$projects->title ?? ''}}</td>
 
                                     <td>{{$projects->created_at}}</td>
-                                    <td class="process">Processing</td>
+                                    <td class="process">{{$projects->status}}</td>
                                     <td>{{\App\Models\tasks::where('project_id',$projects->id)->count()}}</td>
                                     <td>
                                         <div class="table-data-feature">

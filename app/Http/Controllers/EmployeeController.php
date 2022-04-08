@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\firstsEvent;
+use App\Models\comments;
 use App\Models\department;
 use App\Models\employee;
 use App\Models\employee_task;
@@ -23,8 +25,11 @@ class EmployeeController extends Controller
 
         $task = employee::find(session('id'))->tasks()->get();
         $employee = employee::find(session('id'))->id;
-        $taskid = employee::find(session('id'))->tasks()->first()->id;
-        return view('welcome', ['task' => $task, 'employee' => $employee, 'taskid' => $taskid]);
+        $taskid = employee::find(session('id'))->tasks()->get();
+        $comment = comments::where('task_id',$taskid)->first();
+        $taskCount = tasks::count('id');
+
+        return view('welcome', ['task' => $task, 'employee' => $employee, 'taskid' => $taskid,'comment'=>$comment,'taskCount'=>$taskCount]);
 
     }
 
@@ -147,6 +152,10 @@ class EmployeeController extends Controller
     function edit(employee $employee)
     {
         //
+        event(
+            new firstsEvent(employee::all()->toArray())
+
+        );
     }
 
     /**

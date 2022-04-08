@@ -134,6 +134,7 @@ class TasksController extends Controller
         $department = department::all();
         $pod = pod::all();
 
+
         return view('tasksList', ['task' => $tasks, 'project' => $project, 'department' => $department, 'pod' => $pod]);
     }
     public function createTask(Request $request , $taskid , $empid)

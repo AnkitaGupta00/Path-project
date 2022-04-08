@@ -24,6 +24,7 @@ use App\Http\Controllers\EmployeeTaskController;
 Route::get('/home',[EmployeeController::class,'index']);
 Route::get('/register',[EmployeeController::class,'register']);
 Route::post('/show',[EmployeeController::class,'store']);
+Route::get('/',[EmployeeController::class,'create']);
 Route::get('/login',[EmployeeController::class,'create']);
 Route::get('/logout', [EmployeeController::class,'destroy']);
 Route::post('/createLogin',[EmployeeController::class,'show'])->middleware('checkEmail');
@@ -40,4 +41,5 @@ Route::get('/addPod',[ProjectController::class,'pod']);
 Route::get('/pod',[ProjectController::class,'show']);
 Route::get('/complete/{id}',[ProjectController::class,'create']);
 Route::post('/commit/{taskid}/{empid}',[TasksController::class,'createTask']);
+Route::get('/event',[EmployeeController::class,'edit']);
 

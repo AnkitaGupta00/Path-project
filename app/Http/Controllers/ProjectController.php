@@ -30,13 +30,17 @@ class ProjectController extends Controller
     public function create($id)
     {
         //
-        $project = project::find($id)->status;
-        if ($project == 0) {
-            $status = 'Processing';
-        } else {
-            $status = 'complete';
+
+        $project = project::find($id);
+        $projectStatus = $project->status;
+
+        if ($projectStatus == 'processing') {
+            $project->status  = 'completed';
         }
-        return redirect()->back();
+
+        $project->save();
+
+        return redirect()->route('index');
     }
 
     /**

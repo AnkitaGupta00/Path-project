@@ -90,6 +90,16 @@
 <script src="vendor/animsition/animsition.min.js"></script>
 <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
 </script>
+<script>
+    var msg = '<?php echo e(Session::get('alert')); ?>';
+        
+    var exist = '<?php echo e(Session::has('alert')); ?>';
+    
+    if (exist) {
+        alert(msg);
+    }
+
+</script>
 <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
 <script src="vendor/counter-up/jquery.counterup.min.js">
 </script>
